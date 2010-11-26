@@ -1,0 +1,65 @@
+{% extends "layout_ws.html" %}
+{% block header %}
+{% endblock %}
+{% block content %}
+  {% if error %}
+    <div class="post">
+      <h1 class="title">There was an error</h1>
+      <div class="entry">
+        <p>{{ error }}</p>
+      </div>
+    </div>
+  {% endif %}
+  {% if http_get %}
+    <div class="post">
+      <h1 class="title">Enter some text</h1>
+      <div class="entry">
+          <p>
+            <form method="POST" action="/ws">
+              Choose a root:
+              <select id="root" name="root">
+                <option value="a">A</option>
+                <option value="b">B</option>
+                <option value="c">C</option>
+                <option value="d">D</option>
+                <option value="e">E</option>
+                <option value="f">F</option>
+                <option value="g">G</option>
+              </select>
+              <br />Choose your scale:<br />
+              {% for scale in scales %}
+                <br /><input type="radio" name="scale" id="scale" value={{ scale }} />{{ scale }}
+              {% endfor %}
+              <br /><input type="submit" id="button" value="Sing for me! SING!" />
+            </form>
+          </p>
+      </div>
+    </div>
+  {% else %}
+    <div class="post">
+      <h1 class="title">Guitar Scale Finder output</h1>
+      <div class="entry">
+          <h3>In-key notes for the key of {{ root }}-{{ scale_used }}:</h3>
+          {% for vextab_code in vextab_codes %}
+          <div class="vex-tabdiv" width=680 scale=0.95>
+            tabstave notation=true
+            notes {{ vextab_code }}
+          </div>
+          {% endfor %}
+      </div>
+
+      <h1 class="title">Again!</h1>
+      <div class="entry">
+          <p>
+            <form method="POST" action="/ws">
+              <br />Choose your scale:<br />
+              {% for scale in scales %}
+                <br /><input type="radio" name="scale" id="scale" value={{ scale }} />{{ scale }}
+              {% endfor %}
+              <br /><input type="submit" id="button" value="Sing for me! SING!" />
+            </form>
+          </p>
+      </div>
+    </div>
+  {% endif %}
+{% endblock %}
