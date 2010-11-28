@@ -20,6 +20,7 @@ import handlers.about
 def main():
     application = webapp.WSGIApplication([
       ('/', handlers.guitarscalefinder.GSFHandler),
+      ('/gsf', handlers.guitarscalefinder.GSFHandler),
       ('/about', handlers.about.AboutHandler)
     ], debug=True)
     util.run_wsgi_app(application)

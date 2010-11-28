@@ -1,4 +1,4 @@
-{% extends "layout_ws.html" %}
+{% extends "layout_gsf.html" %}
 {% block header %}
 {% endblock %}
 {% block content %}
@@ -12,10 +12,10 @@
   {% endif %}
   {% if http_get %}
     <div class="post">
-      <h1 class="title">Enter some text</h1>
+      <h1 class="title">Select the root and scale:</h1>
       <div class="entry">
           <p>
-            <form method="POST" action="/ws">
+            <form method="POST" action="/gsf">
               Choose a root:
               <select id="root" name="root">
                 <option value="a">A</option>
@@ -51,7 +51,17 @@
       <h1 class="title">Again!</h1>
       <div class="entry">
           <p>
-            <form method="POST" action="/ws">
+            <form method="POST" action="/gsf">
+              Choose a root:
+              <select id="root" name="root">
+                <option value="a">A</option>
+                <option value="b">B</option>
+                <option value="c">C</option>
+                <option value="d">D</option>
+                <option value="e">E</option>
+                <option value="f">F</option>
+                <option value="g">G</option>
+              </select>
               <br />Choose your scale:<br />
               {% for scale in scales %}
                 <br /><input type="radio" name="scale" id="scale" value={{ scale }} />{{ scale }}

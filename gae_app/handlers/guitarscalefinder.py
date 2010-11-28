@@ -11,9 +11,9 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 
 import os
+import sys
 import traceback
 import time
-import yaml
 import logging
 import urllib
 
@@ -43,15 +43,16 @@ class GSFHandler(webapp.RequestHandler):
     )
     self.response.out.write(template.render(path, template_values))
 
-  def runGuitarScaleFinder(self, root, scale, tuning=None)
+  def runGuitarScaleFinder(self, root, scale, tuning=None):
     try:
-      gsf = GuitarScaleFinder(root, scale, tuning)
+      gsf = GuitarScaleFinder(root, scale)
+      print gsf.to_str()
 
       template_values = {
         'http_get': False,
         'root': root,
         'scale_used': scale,
-        'scale': get_scale_names(),
+        'scales': get_scale_names(),
         'vextab_codes': gsf.split_str(12)
       }
     except DeadlineExceededError:
