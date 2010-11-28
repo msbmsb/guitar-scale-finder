@@ -8,12 +8,12 @@ File to test the GuitarScaleFinder class.
 """
 
 # wordstrument classes & methods
-from lib.sequence import Sequence
-from lib.note import Note
-import lib.tablature as tablature
-from lib.scale import is_valid_scale
+from ws_lib.sequence import Sequence
+from ws_lib.note import Note
+import ws_lib.tablature as tablature
+from ws_lib.scale import is_valid_scale
 
-from guitar_scale_finder import GuitarScaleFinder
+from lib.guitar_scale_finder import GuitarScaleFinder
 
 ###############################
 # testing
