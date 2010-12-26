@@ -7,6 +7,7 @@ Handler for GuitarScaleFinder
 * License:      MIT License: http://creativecommons.org/licenses/MIT/
 """
 
+from google.appengine.runtime import DeadlineExceededError
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 
